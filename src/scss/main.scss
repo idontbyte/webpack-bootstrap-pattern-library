@@ -1,0 +1,23 @@
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+@import "variables";
+@import "variables-dark";
+
+// 3. Include bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Import Font Awesome's base styles
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+// Import the solid icons styles
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
+// Import the regular icons styles
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+// Import the brands icons styles
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+// Application CSS

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Webpack, Bootstrap Pattern Library</title>
+    <link href="../scss/main.scss" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" media="print"
+    onload="this.media='all'" rel="stylesheet">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </noscript>
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100 d-flex flex-column">
+        <div class="row">
+            <div class="col-12 bg-dark">
+                <div class="row">
+                    <div class="col-3 col-lg-1 col-md-2 col-sm-3">
+                        <a href="/">Customer logo</a>
+                    </div>
+                    <div class="col-3 col-lg-5 col-md-4 col-sm-3">
+                        <h1 class="h6 text-light pt-2 font-monospace">pattern library</h1>
+                    </div>
+                    <div class="col-6 text-end pt-2 font-monospace">
+                        <h3 class="text-light d-inline-block pe-2 h6">Display:</h3>
+                        <a class="view-toggle" data-type="laptop" href="#"><i class="fa fa-laptop text-warning pe-2">
+                                Laptop</i></a>
+                        <a class="view-toggle" data-type="tablet" href="#"><i class="fa fa-tablet text-light pe-2">
+                                Tablet</i></a>
+                        <a class="view-toggle" data-type="mobile" href="#"><i class="fa fa-mobile text-light">
+                                Mobile</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1">
+            <div class="col-12 col-md-3 col-xl-2 bg-dark bg-gradient p-4 font-monospace">
+                <ul class="nav nav-pills flex-column text-uppercase">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/Pattern/StyleGuide" target="frame">Style Guide</a>
+                    </li>
+                </ul>
+                <h5 class="pt-4 text-light">Page Components:</h5>
+                <ul class="nav nav-pills flex-column text-uppercase">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Pattern/Header" target="frame">Header</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Pattern/InPageNav" target="frame">In Page Nav</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Pattern/Footer" target="frame">Footer</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-9 col-xl-10"
+                style="background: repeating-linear-gradient(-55deg, #222, #222 20px, #333 20px, #333 40px)">
+                <iframe name="frame" class="bg-white"
+                    style="display: block; margin: 0 auto; width: 100%; height: 100%; border: 0"
+                    src="/Pattern/StyleGuide"></iframe>
+            </div>
+        </div>
+    </div>
+    <script>
+        // remove active class from all nav-link and apply to last clicked
+        // using vanilla js
+        var navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach(function (navLink) {
+            navLink.addEventListener("click", function () {
+                navLinks.forEach(function (navLink) {
+                    navLink.classList.remove("active");
+                });
+                this.classList.add("active");
+            });
+        });
+
+        // when .view-toggle is clicked then change the iframe size accordingly and add active class to the clicked link
+        // using vanilla js
+        var viewToggles = document.querySelectorAll(".view-toggle");
+        viewToggles.forEach(function (viewToggle) {
+            viewToggle.addEventListener("click", function (e) {
+                e.preventDefault();
+                viewToggles.forEach(function (viewToggle) {
+                    viewToggle.classList.remove("active");
+                    viewToggle.firstChild.classList.remove("text-warning");
+                    viewToggle.firstChild.classList.add("text-light");
+                });
+                this.classList.add("active");
+                this.firstChild.classList.remove("text-light");
+                this.firstChild.classList.add("text-warning");
+                var type = this.getAttribute("data-type");
+                var frame = document.querySelector("iframe");
+                if (type === "laptop") {
+                    frame.style.width = "100%";
+                    frame.style.height = "100%";
+                } else if (type === "tablet") {
+                    frame.style.width = "768px";
+                    frame.style.height = "100%";
+                } else if (type === "mobile") {
+                    frame.style.width = "375px";
+                    frame.style.height = "667px";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
