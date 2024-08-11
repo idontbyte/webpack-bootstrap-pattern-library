@@ -1,1 +1,1 @@
-# webpack-pattern-library
+# A Webpack, Bootstrap Pattern Library
